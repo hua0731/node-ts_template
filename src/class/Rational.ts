@@ -1,6 +1,6 @@
 export class Rational {
-    private numerator: number;   // 分子
-    private denominator: number; // 分母
+    private numerator: number;
+    private denominator: number;
 
     constructor(numerator: number, denominator: number) {
         if (denominator === 0) {
@@ -10,7 +10,7 @@ export class Rational {
         this.denominator = denominator;
     }
 
-    // Getter methods
+
     public getNumerator(): number {
         return this.numerator;
     }
@@ -19,23 +19,23 @@ export class Rational {
         return this.denominator;
     }
 
-    // Normalize method: returns a new Rational with simplified form
+
     public normalize(): Rational {
         const gcd = this.greatestCommonDivisor(this.numerator, this.denominator);
         return new Rational(this.numerator / gcd, this.denominator / gcd);
     }
 
-    // Method to check if the number is a whole number (integer)
+
     public isWhole(): boolean {
         return this.numerator % this.denominator === 0;
     }
 
-    // Method to check if the number is a decimal
+
     public isDecimal(): boolean {
         return !this.isWhole();
     }
 
-    // Static method to parse two character arrays into a Rational object
+
     public static _parseRational(numeratorChars: string[], denominatorChars: string[]): Rational {
         const numerator = parseInt(numeratorChars.join(""));
         const denominator = parseInt(denominatorChars.join(""));
@@ -47,7 +47,7 @@ export class Rational {
         return new Rational(numerator, denominator);
     }
 
-    // Static method to parse a string like "43/23"
+
     public static parseRational(rationalStr: string): Rational {
         const parts = rationalStr.split("/");
 
@@ -65,17 +65,17 @@ export class Rational {
         return new Rational(numerator, denominator);
     }
 
-    // Helper method to find the greatest common divisor
+
     private greatestCommonDivisor(a: number, b: number): number {
         return b === 0 ? Math.abs(a) : this.greatestCommonDivisor(b, a % b);
     }
 
-    // ToString method
+
     public toString(): string {
-        return `${this.numerator}/${this.denominator}`; // 修正为使用反引号
+        return `${this.numerator}/${this.denominator}`;
     }
 
-    // Method to check equality
+
     public equals(r: Rational): boolean {
         const currentNormalized = this.normalize();
         const rNormalized = r.normalize();
